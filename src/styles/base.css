@@ -1,0 +1,332 @@
+/* ---------------------------------------------------------------------------
+   Reset + base
+   --------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Keeps anchored sections clear of the sticky navigation */
+  scroll-padding-top: calc(var(--nav-height) + 12px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  overflow-wrap: break-word;
+}
+
+p {
+  overflow-wrap: break-word;
+}
+
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--google-blue);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+section:focus,
+main:focus {
+  outline: none;
+}
+
+::selection {
+  background: var(--blue-soft);
+  color: var(--text);
+}
+
+/* ---------------------------------------------------------------------------
+   Utilities
+   --------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -120%);
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--text);
+  color: #fff;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  font-weight: 600;
+  transition: transform 0.2s var(--ease);
+}
+
+.skip-link:focus-visible {
+  transform: translate(-50%, 0);
+}
+
+/* ---------------------------------------------------------------------------
+   Sections
+   --------------------------------------------------------------------------- */
+.section {
+  padding-block: var(--section-gap);
+}
+
+.section--surface {
+  background: var(--surface);
+  border-block: 1px solid var(--border);
+}
+
+.section__head {
+  max-width: 40rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.section__title {
+  font-size: clamp(1.75rem, 1.1rem + 2.6vw, 2.75rem);
+  margin-top: 0.5rem;
+}
+
+.section__lede {
+  margin-top: 0.875rem;
+  color: var(--text-muted);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+}
+
+.eyebrow {
+  margin-top: 0.75rem;
+  color: var(--blue-ink);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hl-blue {
+  color: var(--blue-ink);
+}
+
+.hl-green {
+  color: var(--green-ink);
+}
+
+/* ---------------------------------------------------------------------------
+   Colour mark (four Google bars)
+   --------------------------------------------------------------------------- */
+.colormark {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.colormark__bar {
+  width: 22px;
+  height: 5px;
+  border-radius: var(--radius-pill);
+}
+
+.colormark--section {
+  gap: 5px;
+}
+
+.colormark--section .colormark__bar {
+  width: 26px;
+  height: 6px;
+}
+
+.colormark--hero {
+  gap: 7px;
+  margin-top: 1.25rem;
+}
+
+.colormark--hero .colormark__bar {
+  width: clamp(28px, 6vw, 44px);
+  height: 7px;
+}
+
+.colormark--cta {
+  gap: 6px;
+}
+
+.colormark--cta .colormark__bar {
+  width: 30px;
+  height: 6px;
+}
+
+.colormark__bar--blue {
+  background: var(--google-blue);
+}
+.colormark__bar--red {
+  background: var(--google-red);
+}
+.colormark__bar--yellow {
+  background: var(--google-yellow);
+}
+.colormark__bar--green {
+  background: var(--google-green);
+}
+
+/* ---------------------------------------------------------------------------
+   Buttons
+   --------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease),
+    background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.btn--primary {
+  background: var(--google-blue);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--primary:hover {
+  background: #1a73e8;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+}
+
+.btn--ghost {
+  background: #fff;
+  color: var(--text-soft);
+  border-color: var(--border-strong);
+}
+
+.btn--ghost:hover {
+  border-color: var(--google-blue);
+  color: var(--blue-ink);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--large {
+  min-height: 56px;
+  padding-inline: 2rem;
+  font-size: 1.0625rem;
+}
+
+.btn__icon {
+  flex: none;
+  transition: transform 0.2s var(--ease);
+}
+
+.btn:hover .btn__icon {
+  transform: translateX(3px);
+}
+
+/* ---------------------------------------------------------------------------
+   Entrance animation
+   --------------------------------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.55s var(--ease) var(--reveal-delay), transform 0.55s var(--ease) var(--reveal-delay);
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .btn:hover,
+  .card:hover,
+  .nav__toggle:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,27 @@
+/* ---------------------------------------------------------------------------
+   About
+   --------------------------------------------------------------------------- */
+.about {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 52rem;
+}
+
+.about__lead {
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.about__lead strong {
+  color: var(--blue-ink);
+  font-weight: 700;
+}
+
+.about__body {
+  color: var(--text-muted);
+  font-size: clamp(1rem, 0.97rem + 0.2vw, 1.0625rem);
+  max-width: 46rem;
+}
